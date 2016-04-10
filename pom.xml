@@ -1,0 +1,59 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>testMaven</groupId>
+	<artifactId>testMaven</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<properties>
+
+		<java.version>1.8</java.version>
+		<!-- Maven Plugin Versions -->
+		<maven.compiler.plugin.version>3.2</maven.compiler.plugin.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.8.9</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.8.9</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun</groupId>
+			<artifactId>tools</artifactId>
+			<version>1.8</version>
+			<scope>system</scope>
+			<systemPath>C:\Program Files\Java\jdk1.8.0_77\lib\tools.jar</systemPath>
+		</dependency>
+	</dependencies>
+
+	<build>
+		
+			<plugins>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>aspectj-maven-plugin</artifactId>
+					<version>1.8</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>compile</goal>       <!-- use this goal to weave all your main classes -->
+								<goal>test-compile</goal>  <!-- use this goal to weave all your test classes -->
+							</goals>
+							<configuration>
+								<source>1.8</source>
+								<target>1.8</target>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				
+			</plugins>
+		
+	</build>
+</project>
