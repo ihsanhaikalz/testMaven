@@ -11,7 +11,6 @@ public class testing {
 
 
 	public void setDd(int dd) {
-		System.out.println("yeah");
 		this.dd = dd;
 	}
 

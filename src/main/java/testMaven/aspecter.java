@@ -47,16 +47,33 @@ public class aspecter {
 	int ewq = 5;
 
 
-	static boolean tracked = false;
+	static boolean tracked = true;
+
+	public static boolean isTracked() {
+		return tracked;
+	}
+
+	public static void setTracked(boolean tracked) {
+		aspecter.tracked = tracked;
+	}
 
 	@Pointcut("if()")
 	public static boolean tracked() {
 	  return tracked;
 	}
 
-	@Before("execution(*  testMaven.testing.aa(..)) && tracked()")
+	@Before("execution(*  testMaven.testing.aa(..)) ")
 	public void testBefore(){
-	    System.out.println("yooi");
+		System.out.println(tracked);
+		if(isTracked() == true){
+		    System.out.println("yooi");
+		}
+	}
+	
+	@After("execution(*  testMaven.testing.aa(..)) && tracked()")
+	public void testBefore3(){
+	    System.out.println("yooi3");
+	    tracked = true;
 	}
 
 	@Before("execution(*  testMaven.testing.setDd(..)) && tracked() ")
@@ -84,16 +101,16 @@ public class aspecter {
 	//		System.out.println("create testing class 2");
 	//	}
 
-	@Before("get (int testMaven.testing.dd)")
-	public void getD2(){
-		System.out.println("dd is accessed 2");
-		//		System.out.println("value of dd " + dd);
-	}
+//	@Before("get (int testMaven.testing.dd)")
+//	public void getD2(){
+//		System.out.println("dd is accessed 2");
+//		//		System.out.println("value of dd " + dd);
+//	}
 
 	@Pointcut("call (*  testMaven.testing.getDd(..))")
 	public void getter(){}
 
-	@AfterReturning(pointcut="execution(* testMaven.testing.getDd(..))", returning="returned")
+	@AfterReturning(pointcut="execution(* testMaven.testing.getDd(..)) && tracked()", returning="returned")
 	public void testGet(long returned){
 		System.out.println("get ok");
 		System.out.println("returned value = " + returned);

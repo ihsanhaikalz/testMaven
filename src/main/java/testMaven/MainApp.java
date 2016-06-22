@@ -11,7 +11,8 @@ public class MainApp {
 		testing test = new testing();
 		test.aa(1000);
 		test.setDd(3);
-//		System.out.println(test.getDd());
+//		test.getDd();
+		System.out.println(test.getDd());
 //		
 //		tester et = new tester();
 //		et.setZ(50);
