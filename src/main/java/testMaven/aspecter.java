@@ -64,19 +64,16 @@ public class aspecter {
 
 	@Before("execution(*  testMaven.testing.aa(..)) ")
 	public void testBefore(){
-		System.out.println(tracked);
-		if(isTracked() == true){
-		    System.out.println("yooi");
-		}
+	System.out.println("22");
 	}
 	
-	@After("execution(*  testMaven.testing.aa(..)) && tracked()")
+	@After("execution(*  testMaven.testing.aa(..)) ")
 	public void testBefore3(){
 	    System.out.println("yooi3");
 	    tracked = true;
 	}
 
-	@Before("execution(*  testMaven.testing.setDd(..)) && tracked() ")
+	@Before("execution(*  testMaven.testing.setDd(..)) ")
 	public void testBefore2(){
 	    System.out.println("yooi2");
 	}
